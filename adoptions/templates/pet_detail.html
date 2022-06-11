@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
     <h1>
-        {{ pet.name }} is a {{ pet.type }}
+        {{ pet.name|capfirst }} is a {{ pet.species }}
     </h1>
+    <p>
+        {{ pet.description }}
+    </p>
 </html>

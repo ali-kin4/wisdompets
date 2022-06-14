@@ -1,18 +1,24 @@
-<div>
-    {% for pet in pets %}
-        <div class="petname">
-            <a href="{% url 'pet_detail' pet.id %}">
-                <h3>{{ pet.name|capfirst }}</h3>
-            </a>
+{% extends "base.html" %}
+{% block content %}
+    <html lang="en">
+        <title>WisdomPet</title>
+        <div>
+            {% for pet in pets %}
+                <div class="petname">
+                    <a href="{% url 'pet_detail' pet.id %}">
+                        <h3>{{ pet.name|capfirst }}</h3>
+                    </a>
 
-            <p>{{ pet.species }} </p>
+                    <p>{{ pet.species }} </p>
 
-            {% if pet.breed %}
-                <p>Breed: {{ pet.breed }} </p>
-            {% endif %}
+                    {% if pet.breed %}
+                        <p>Breed: {{ pet.breed }} </p>
+                    {% endif %}
 
-            <p class="hidden">{{ pet.description }}</p>
-            <p>===================</p>
+                    <p class="hidden">{{ pet.description }}</p>
+                    <p>===================</p>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-</div>
+    </html>
+{% endblock %}

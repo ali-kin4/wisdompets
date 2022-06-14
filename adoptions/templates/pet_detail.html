@@ -1,10 +1,42 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+    <html lang="en">
+        <title>WisdomPet | {{ pet.name|capfirst }}</title>
+        <div>
+            <h2>
+                {{ pet.name|capfirst}}
+            </h2>
 
-<html lang="en">
-    <h1>
-        {{ pet.name|capfirst }} is a {{ pet.species }}
-    </h1>
-    <p>
-        {{ pet.description }}
-    </p>
-</html>
+            <p>
+                {{ pet.species }}
+            </p>
+            
+            {% if pet.breed %}
+                <p><em><span style="font-family:Arial,Helvetica,sans-serif">Breed: </span></em> {{ pet.breed }} </p>
+            {% endif %}
+
+            {% if pet.age %}
+                <p><em><span style="font-family:Arial,Helvetica,sans-serif">Age: </span></em>{{ pet.age }} </p>
+            {% endif %}
+
+            {% if pet.sex %}
+                <p><em><span style="font-family:Arial,Helvetica,sans-serif">Sex: </span></em>{{ pet.sex }} </p>
+            {% endif %}
+
+            {% if pet.vaccination.all %}
+                <p><em><span style="font-family:Arial,Helvetica,sans-serif">Vaccinations for: </span></em></p>
+                <ul>
+                    {% for vaccination in vaccination.all %}
+                        <li>
+                            {{ vaccination.name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <p>Submitted by <b>{{ pet.submitter }}</b></p>
+            <p>Submitted date: <span style="color:#11b938"><strong>{{ pet.submission_date|date:"M d Y" }}</strong></span></p>
+            <p><span style="font-family:Comic Sans MS,cursive">{{ pet.description }}</span></p>
+        </div>
+    </html>
+{% endblock %}

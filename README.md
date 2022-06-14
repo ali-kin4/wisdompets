@@ -1,2 +1,2 @@
 # wisdompets
-Sample Django application for pet mangagement
+Sample Django application for pet management
